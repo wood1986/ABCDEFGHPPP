@@ -1,33 +1,3 @@
-/*
-
-#COMBINATION: 362880 = 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2
-#ACTUAL     : 3471
-
-P: P = 1                      <-- 99 + 99 < 200
-                                  0 - Z + Z = 000
-Q: A != 0                     <-- 09 - 12 < 0
-R: D != 0                     <-- Z - 0 = Z
-S: F, H != 0                  <-- Z + 0 = Z
-T: E, G != 0                  <-- 09 + 102 = 111
-U: E, G != 1                  <-- MIN + MAX = 111
-                                  MAX = 87
-                                  MIN = 24
-V: A != 2                     <-- A * 10 + B > C * 10 + D
-                                  B > D -> A = E
-                                  D > B -> E = 1
-
-  | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
-A |   |   |   |   |   |   |   | V | P | Q | -> 1111111000
-B |   |   |   |   |   |   |   |   | P |   | -> 1111111101
-C |   |   |   |   |   |   |   |   | P |   | -> 1111111101
-D |   |   |   |   |   |   |   |   | P | R | -> 1111111100
-E | U |   |   |   |   |   |   |   | P | T | -> 0111111100
-F |   |   |   |   |   |   |   |   | P | S | -> 1111111100
-G | U |   |   |   |   |   |   |   | P | T | -> 0111111100
-H |   |   |   |   |   |   |   |   | P | S | -> 1111111100
-
-*/
-
 "use strict";
 
 const b = [0b1111111000,  // A * 10
@@ -57,11 +27,7 @@ const m = {
   "7": "F"
 };
 
-let R = 0;
-
 let abcdefghppp = (bit, index, actual, expected, backtrace) => {
-  R++;
-
   if (index === 4) {
     if (actual < 24) {
       return;
@@ -105,4 +71,3 @@ let abcdefghppp = (bit, index, actual, expected, backtrace) => {
 }
 
 abcdefghppp((1 << 10) - 1, 0, 0, 111, "| ");
-console.log(R);
