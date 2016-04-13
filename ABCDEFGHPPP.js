@@ -1,12 +1,15 @@
 "use strict";
 
+let name = "EXECUTION TIME";
+console.time(name);
+
 const b = [0b1111111000,  // A * 10
            0b1111111101,  // B
            0b1111111101,  // C * -10
            0b1111111100,  // D
-           0b0111111100,  // G * 10
+           0b0111011100,  // G * 10
            0b1111111100,  // H
-           0b0111111100,  // E
+           0b0111011100,  // E
            0b1111111100]; // F
 
 const k = [10,
@@ -26,6 +29,8 @@ const m = {
   "6": "E",
   "7": "F"
 };
+
+let count = 0;
 
 let abcdefghppp = (bit, index, actual, expected, backtrace) => {
   if (index === 4) {
@@ -53,9 +58,10 @@ let abcdefghppp = (bit, index, actual, expected, backtrace) => {
   }
 
   if (index >= 6) {
+    count++;
+
     if (actual === expected) {
       console.log(backtrace);
-      return;
     }
 
     return;
@@ -71,3 +77,5 @@ let abcdefghppp = (bit, index, actual, expected, backtrace) => {
 }
 
 abcdefghppp((1 << 10) - 1, 0, 0, 111, "| ");
+console.log(count);
+console.timeEnd(name);
