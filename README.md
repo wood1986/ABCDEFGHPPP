@@ -26,9 +26,6 @@
 * All empty cells are possible.
 * Reasons are the followings:
   * `P: P = 1`
-    * The largest 2-digit number = `99`
-    * The sum of two largest 2-digit numbers = `198`
-    * The sum of two smallest 2-digit numbers = `0`
     * `[EF], [GH] > 11`
       * `if [EF] <= 11`
         * `GH >= 100`
@@ -37,7 +34,7 @@
         * `[EF] + [GH] = 111`
 
   * `Q: D != 0`
-    * `if D = 0
+    * `if D = 0`
       * `B = F`
         * `CONTRADICTION`
 
@@ -70,7 +67,7 @@
     * `if E = 9`
       * `12 <= [GH] = 111 - 90 - F = 21 - F <= 21`
         * `F < 2`
-          * `if F >= 2
+          * `if F >= 2`
             * `G = 1`
               * `CONTRADICTION`
         * `F != 0`

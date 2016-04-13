@@ -30,9 +30,11 @@ const m = {
   "7": "F"
 };
 
-let count = 0;
+let fullCheckCount = 0,
+    callCount = 0;
 
 let abcdefghppp = (bit, index, actual, expected, backtrace) => {
+  callCount++;
   if (index === 4) {
     if (actual < 24) {
       return;
@@ -58,7 +60,7 @@ let abcdefghppp = (bit, index, actual, expected, backtrace) => {
   }
 
   if (index >= 6) {
-    count++;
+    fullCheckCount++;
 
     if (actual === expected) {
       console.log(backtrace);
@@ -77,5 +79,6 @@ let abcdefghppp = (bit, index, actual, expected, backtrace) => {
 }
 
 abcdefghppp((1 << 10) - 1, 0, 0, 111, "| ");
-console.log(count);
+console.log(`FULL CHECK : ${fullCheckCount}`);
+console.log(`TOTAL CALL : ${callCount}`);
 console.timeEnd(name);
